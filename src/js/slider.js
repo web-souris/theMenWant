@@ -33,7 +33,7 @@ export default () => {
         this.changeSlide(index == this.length ? 0 : index)
       }
       this.interval = setTimeout(function() {
-        this.startTime(index == this.length ? 0 : index + 1, true)
+        this.startTime(index == this.length - 1 ? 0 : index + 1, true)
       }.bind(this), 5000)
     },
     init() {
@@ -56,7 +56,7 @@ export default () => {
         clearTimeout(this.interval)
         $('.slide__line').html('')
       }, () => {
-        this.startTime(this.active + 1, false)
+        this.startTime(this.active, false)
       })
     }
   }
