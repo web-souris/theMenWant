@@ -1,5 +1,5 @@
-import $ from "jquery";
-
+import $ from "jquery"
+import slider from './slider'
 $(document).ready(function() {
-  console.log(1)
+  slider().init()
 })

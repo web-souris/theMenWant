@@ -2,19 +2,32 @@
   &__item
     display: flex
     justify-content: space-between
-    align-items: center
+    align-items: stretch
     position: relative
+
     z-index: 4
   &__left
     flex-basis: 45%
+    position: relative
+    height: 350px
+    display: flex
+    justify-content: flex-end
+    flex-direction: column
   &__right
-    flex-basis: 45%
+    flex-basis: 42%
+    position: relative
     img
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
       display: none
-      &:first-child
-        display: block
   &__nav
     flex-basis: 10%
+    text-align: right
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
 
   &__name
     color: #c3c3c3
@@ -25,8 +38,8 @@
 
 .slide
   display: none
-  &:first-child
-    display: block
+  position: absolute
+  top: 0
   &__title
     font-weight: 800
     color: #ffffff
@@ -40,7 +53,7 @@
     +em(14)
     font-weight: 300
   &__footer
-    padding-top: 25px
+    padding-top: 5vh
     display: flex
     justify-content: space-between
     align-items: center
@@ -56,7 +69,6 @@
       height: 55px
       background-color: #000
       transition: all .25s
-      display: inline-block
       display: flex
       justify-content: center
       align-items: center
@@ -105,3 +117,43 @@
         color: #ffffff
       .dark
         color: #000
+
+  &__button
+    svg
+      fill: #fff
+      cursor: pointer
+      width: 45px
+      opacity: .45
+      transition: all .25s
+      &:hover
+        opacity: 1
+    &.close
+      svg
+        opacity: .45
+    &_prev
+      svg
+        transform: rotate(180deg) rotateX(180deg)
+    &_next
+      svg
+        transform: rotateX(180deg)
+  &__info
+    padding: 3vh 0
+    color: #fff
+  &__active
+    +em(22)
+    font-weight: 600
+  &__last
+    font-weight: 500
+  &__line
+    height: 1px
+    background-color: rgba(#fff, .15)
+    width: 65px
+    margin-left: auto
+    margin-top: 5px
+    span
+      display: block
+      width: 0
+      opacity: 1
+      height: 1px
+      background-color: $accent
+      transition: all .25s
