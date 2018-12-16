@@ -56,7 +56,7 @@ export default () => {
         clearTimeout(this.interval)
         $('.slide__line').html('')
       }, () => {
-        this.startTime(this.active, false)
+        this.startTime(this.active + 1, false)
       })
     }
   }
