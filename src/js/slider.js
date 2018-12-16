@@ -3,9 +3,7 @@ export default () => {
   return {
     active: $('.slide.active').index(),
     length: $('.slide').length,
-    lineWidth() {
-      return $('.slide__line span').css('width', this.active == 0 ? 0 : (this.active/(this.length - 1)) * 100 + '%')
-    },
+    interval: null,
     activeSlide() {
       return $('.slide__active').html(this.changeVal(this.active + 1))
     },
@@ -17,7 +15,6 @@ export default () => {
     },
     changeSlide(val) {
       this.active = val
-      console.log(this.active)
       $('.slider__right img.active').fadeOut()
       $('.slider__right img.active').removeClass('active')
       $('.slider__right img').eq(val).addClass('active')
@@ -26,15 +23,31 @@ export default () => {
       $('.slide.active').removeClass('active')
       $('.slide').eq(val).addClass('active')
       $('.slide.active').fadeIn()
-      this.lineWidth()
       this.activeSlide()
+    },
+    startTime(index) {
+      if(index == this.length) {
+        this.changeSlide(0)
+        this.interval =  setTimeout(function() {
+          this.startTime(1)
+        }.bind(this), 5000)
+      }
+      else {
+        this.changeSlide(index)
+        this.interval =  setTimeout(function() {
+          this.startTime(index + 1)
+        }.bind(this), 5000)
+      }
+      $('.slide__line').html('')
+      $('.slide__line').append("<span style='width: 0;'></span>")
+      $('.slide__line span').css('width', '100%')
     },
     init() {
       $('.slide.active').show()
       $('.slider__right img.active').show()
       this.activeSlide()
       this.lastSlide()
-      this.lineWidth()
+      this.startTime(0)
       $('.slide__button_prev').click(() => {
         if(this.active - 1 >= 0) {
           this.changeSlide(this.active - 1)
