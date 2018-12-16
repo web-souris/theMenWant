@@ -25,29 +25,23 @@ export default () => {
       $('.slide.active').fadeIn()
       this.activeSlide()
     },
-    startTime(index) {
-      if(index == this.length) {
-        this.changeSlide(0)
-        this.interval =  setTimeout(function() {
-          this.startTime(1)
-        }.bind(this), 5000)
-      }
-      else {
-        this.changeSlide(index)
-        this.interval =  setTimeout(function() {
-          this.startTime(index + 1)
-        }.bind(this), 5000)
-      }
+    startTime(index, status) {
       $('.slide__line').html('')
       $('.slide__line').append("<span style='width: 0;'></span>")
       $('.slide__line span').css('width', '100%')
+      if(status) {
+        this.changeSlide(index == this.length ? 0 : index)
+      }
+      this.interval = setTimeout(function() {
+        this.startTime(index == this.length ? 0 : index + 1, true)
+      }.bind(this), 5000)
     },
     init() {
       $('.slide.active').show()
       $('.slider__right img.active').show()
       this.activeSlide()
       this.lastSlide()
-      this.startTime(0)
+      this.startTime(0, false)
       $('.slide__button_prev').click(() => {
         if(this.active - 1 >= 0) {
           this.changeSlide(this.active - 1)
@@ -57,6 +51,12 @@ export default () => {
         if(this.active + 1 < this.length) {
           this.changeSlide(this.active + 1)
         }
+      })
+      $('.slider__left, .slider__right').hover(() => {
+        clearTimeout(this.interval)
+        $('.slide__line').html('')
+      }, () => {
+        this.startTime(this.active, false)
       })
     }
   }
