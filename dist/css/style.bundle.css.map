@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/scss/style.sass"],"names":[],"mappings":"AACA,KACE,YAAa,C","file":"./css/style.bundle.css","sourcesContent":["$font-stack: -apple-system, BlinkMacSystemFont, Roboto, \"Open Sans\", \"Helvetica Neue\", sans-serif;\nbody {\n  display: none; }\n"],"sourceRoot":""}

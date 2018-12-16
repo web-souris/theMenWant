@@ -1,0 +1,107 @@
+.slider
+  &__item
+    display: flex
+    justify-content: space-between
+    align-items: center
+    position: relative
+    z-index: 4
+  &__left
+    flex-basis: 45%
+  &__right
+    flex-basis: 45%
+    img
+      display: none
+      &:first-child
+        display: block
+  &__nav
+    flex-basis: 10%
+
+  &__name
+    color: #c3c3c3
+    +em(18)
+    text-transform: uppercase
+    font-weight: 500
+    letter-spacing: 4.5px
+
+.slide
+  display: none
+  &:first-child
+    display: block
+  &__title
+    font-weight: 800
+    color: #ffffff
+    font-family: "Raleway", sans-serif
+    +em(52)
+    line-height: 64px
+    padding: 0
+    margin: 0
+  &__text
+    color: #c3c3c3
+    +em(14)
+    font-weight: 300
+  &__footer
+    padding-top: 25px
+    display: flex
+    justify-content: space-between
+    align-items: center
+  &__video
+    display: flex
+    justify-content: space-between
+    align-items: center
+    span
+      -webkit-border-radius: 10em
+      -moz-border-radius: 10em
+      border-radius: 10em
+      width: 55px
+      height: 55px
+      background-color: #000
+      transition: all .25s
+      display: inline-block
+      display: flex
+      justify-content: center
+      align-items: center
+      cursor: pointer
+      svg
+        stroke: #fff
+        width: 15px
+        position: relative
+        left: 2px
+        transition: all .25s
+    p
+      padding-left: 10px
+      cursor: pointer
+      +em(14)
+      color: #fff
+      transition: all .25s
+    &:hover
+      span
+        svg
+          stroke: $accent
+      p
+        color: $accent
+
+  &__event
+    position: relative
+    text-align: center
+    &::before
+      content: ''
+      position: absolute
+      width: 148px
+      height: 152px
+      top: -18px
+      left: -30px
+      z-index: 3
+      background-image: url(/img/event.png)
+    p
+      position: relative
+      z-index: 4
+      span
+        font-weight: 600
+        +em(14)
+      .big
+        font-weight: 800
+        +em(20)
+      .white
+        color: #ffffff
+      .dark
+        color: #000
