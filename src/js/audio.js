@@ -23,7 +23,7 @@ export default () => {
     },
     createAudio() {
       const audio = "<audio autoplay loop id='music'>" +
-        "<source src='/uploads/music.mp3'>" +
+        "<source src='../uploads/music.mp3'>" +
         "</audio>"
       $('.music').append(audio)
       return this
