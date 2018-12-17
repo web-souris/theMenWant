@@ -76,7 +76,10 @@ const config = {
           {
             loader: "sass-loader",
             options: {
-              sourceMap: true
+              sourceMap: true,
+              includePaths: [
+                require('path').resolve(__dirname, 'node_modules')
+              ]
             }
           }
         ]
