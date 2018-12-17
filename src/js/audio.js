@@ -53,7 +53,7 @@ export default () => {
     clickVolume(val) {
       val = val + 0.5
       const percent = Math.floor(val / $('.music__volume').width()  * 100)
-      this.changeVolume(percent)
+      this.changeVolume(percent);
       return this
     },
     clickStatus() {
