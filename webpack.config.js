@@ -41,7 +41,9 @@ const config = {
     rules: [
       {
         test: /\.(sass|scss)$/,
-        include: path.resolve(__dirname, "src/scss"),
+        include: [path.resolve(__dirname, "src/scss"),
+          require('path').resolve(__dirname, 'node_modules')
+        ],
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -77,9 +79,6 @@ const config = {
             loader: "sass-loader",
             options: {
               sourceMap: true,
-              includePaths: [
-                require('path').resolve(__dirname, 'node_modules')
-              ]
             }
           }
         ]
