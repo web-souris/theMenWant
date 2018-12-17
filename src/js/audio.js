@@ -1,14 +1,19 @@
 import $ from 'jquery'
+import Cookie from 'js-cookie'
 export default () => {
   return {
     volume: 1,
     start: true,
     init() {
       const self = this
+      this.initStatus()
       this.createAudio()
       this.createInterface()
       $(document).on('click', '.music__volume', function(event) {
         self.clickVolume(event.pageX - $(this).offset().left)
+      })
+      $(document).on('click', '.music__status', function() {
+        self.clickStatus()
       })
     },
     changeVolume(val) {
@@ -22,7 +27,7 @@ export default () => {
       return this
     },
     createAudio() {
-      const audio = "<audio autoplay loop id='music'>" +
+      const audio = "<audio "+this.getFirstAutoplay()+" loop id='music'>" +
         "<source src='uploads/music.mp3'>" +
         "</audio>"
       $('.music').append(audio)
@@ -38,7 +43,12 @@ export default () => {
       return this.start ? 'Выкл' : 'Вкл'
     },
     getWidthPersent() {
-      return this.volume * 100 + '%'
+      if(this.start) {
+        return this.volume * 100 + '%'
+      }
+      else {
+        return 0 + '%'
+      }
     },
     clickVolume(val) {
       val = val + 0.5
@@ -46,5 +56,43 @@ export default () => {
       this.changeVolume(percent)
       return this
     },
+    clickStatus() {
+      this.start = !this.start
+      Cookie.set('play', this.start, {
+        expires: 7
+      })
+      if(this.start) {
+        $('#music')[0].play()
+        $('.volume__active').css('width', this.volume * 100 + '%')
+      }
+      else {
+        $('#music')[0].pause()
+        $('.volume__active').css('width', 0)
+      }
+      this.changeStatus()
+      return this
+    },
+    changeStatus() {
+      return $('p.music__status').text(this.getStatusText())
+    },
+    initStatus() {
+      const play = Cookie.get('play')
+      if(play == 'true' || play == undefined) {
+        this.start = true
+      }
+      else {
+        this.start = false
+        $('.volume__active').css('width', 0)
+      }
+      return this
+    },
+    getFirstAutoplay() {
+      if(this.start) {
+        return 'autoplay'
+      }
+      else {
+        return
+      }
+    }
   }
 }
