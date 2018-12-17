@@ -17,5 +17,21 @@ img
   +em(14)
   letter-spacing: 0.6px
   text-transform: uppercase
+
+.social
+  display: flex
+  justify-content: space-between
+  align-items: center
+  &__item
+    margin-right: 15px
+    &:last-child
+      margin-right: 0
+    a
+      color: #ffffff
+      transition: all .25s
+      +em(19)
+      &:hover
+        color: $accent
 @import "_header.sass"
 @import "_slider.sass"
+@import "mouse"
