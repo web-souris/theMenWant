@@ -1,0 +1,93 @@
+.video
+  &__wrapper
+    display: none
+    position: fixed
+    z-index: 1000
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    overflow: hidden
+    video
+      position: absolute
+      top: 0
+      left: 0
+      width: auto
+      height: auto
+      min-height: 100%
+      min-width: 100%
+  &__controls
+    position: absolute
+    left: 0
+    right: 0
+    max-width: 1190px
+    margin: 0 auto
+    bottom: 0
+    padding: 0 10px 4vh
+  &__header
+    position: absolute
+    padding: 2vh 10px 0
+    display: flex
+    justify-content: space-between
+    align-items: center
+    left: 0
+    right: 0
+    max-width: 1190px
+    top: 0%
+    margin: 0 auto
+  &__cross
+    width: 30px
+    height: 30px
+    cursor: pointer
+    position: relative
+    &::before
+      top: 50%
+      content: ''
+      width: 30px
+      height: 2px
+      background-color: #fff
+      position: absolute
+      transform: rotate(-45deg)
+    &::after
+      top: 50%
+      content: ''
+      width: 30px
+      height: 2px
+      background-color: #fff
+      position: absolute
+      transform: rotate(45deg)
+  &__line
+    position: relative
+    height: 1px
+    background-color: #fff
+    opacity: .35
+    margin-top: 20px
+  &__time
+    font-weight: 500
+    color: #fff
+  &__current
+    height: 3px
+    width: 0
+    background-color: #d3964d
+    display: block
+    position: relative
+    top: -1px
+
+@media (min-aspect-ratio: 16/9)
+  .video__wrapper video
+    height: 300%
+    top: -100%
+@media (max-aspect-ratio: 16/9)
+  .video__wrapper
+    video
+      width: 300%
+      left: -100%
+
+@supports (object-fit: cover)
+  .video__wrapper
+    video
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
