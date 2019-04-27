@@ -1,0 +1,108 @@
+.first
+  &__rounds
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    width: 20%
+    background-image: url(/img/elips.png)
+    -webkit-background-size: cover
+    background-position: top 0
+  &__content
+    max-width: 100%
+    position: relative
+    padding: 3% 0
+    z-index: 3
+  &__video
+    opacity: .05
+    position: absolute
+    bottom: 0
+    left: 0
+    z-index: 0
+    right: 0
+  &__subtitle
+    +em(18)
+    margin-top: 0
+    color: #c3c3c3
+    font-weight: 500
+  &__text
+    +em(14)
+    color: #c3c3c3
+  &-carousel
+    img
+      width: 100%
+  &__button
+    padding-top: 15px
+  &__bg
+    position: absolute
+    top: 18%
+    left: 50%
+    transform: translateX(-50%) translateY(-50%)
+    color: #161616
+    +em(200)
+    z-index: -1
+    font-family: Raleway, sans-serif
+    font-weight: 900
+  &__footer
+    margin-bottom: 3%
+    height: 40px
+    position: relative
+    z-index: 1
+  &__mouse
+    margin: 0 auto
+    display: block
+    cursor: pointer
+  &__social
+    ul
+      list-style-type: none
+      padding: 0
+      margin: 0
+      a
+        color: #fff
+        transition: all .25s
+        +em(18)
+        &:hover
+          color: $accent
+  &__canvas
+    height: 40px
+    width: 100%
+    position: relative
+    z-index: -3
+
+  &__play
+    color: #fff
+    cursor: pointer
+    +em(18)
+    transition: all .25s
+    display: inline-block
+    &:hover
+      color: $accent
+  &__event
+    position: absolute
+    top: -45%
+    right: 0px
+    z-index: 4
+    text-align: center
+    width: 148px
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 152px
+    background-image: url(../img/event.png)
+    font-weight: 700
+    &_white
+      color: #fff
+    &_dark
+      color: #3d3d3e
+    &_big
+      font-weight: 900
+      +em(20)
+    div
+      position: relative
+      top: -5px
+.play_right
+  text-align: right
+
+@media screen and (max-width: 500px)
+  .first__bg
+    +em(170)

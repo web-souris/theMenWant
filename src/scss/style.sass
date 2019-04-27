@@ -1,17 +1,24 @@
-@import "_plugins.sass"
+
 @import "vars/_index.sass"
 @import "mixins/_index.sass"
 
 body
-    font-family: 'Montserrat', sans-serif
-    font-weight: 400
-    overflow-x: hidden
-    font-size: 16px
-    line-height: 1.5
-    padding: 0
-    margin: 0
+  font-family: 'Montserrat', sans-serif
+  font-weight: 400
+  overflow-x: hidden
+  font-size: 16px
+  line-height: 1.5
+  height: 100%
+
+  padding: 0
+  margin: 0
 *
-    box-sizing: border-box
+  box-sizing: border-box
 
-@import "components/_index.sass"
+@media screen and (max-width: 576px)
+  .container
+    padding-left: 25px
+    padding-right: 25px
 
+@import "layouts/index"
+@import "components/index"
